@@ -33,6 +33,12 @@ CREATE TABLE "Training" (
     "description" TEXT,
     "link" TEXT,
     "duration" INTEGER,
+    "createdAt" TIMESTAMPTZ(3) DEFAULT CURRENT_TIMESTAMP,
+    "createdBy" TEXT,
+    "deletedAt" TIMESTAMPTZ(3),
+    "deletedBy" TEXT,
+    "editedAt" TIMESTAMPTZ(3),
+    "editedBy" TEXT,
 
     CONSTRAINT "Training_pkey" PRIMARY KEY ("id")
 );
@@ -42,6 +48,12 @@ CREATE TABLE "Collection" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT,
+    "createdAt" TIMESTAMPTZ(3) DEFAULT CURRENT_TIMESTAMP,
+    "createdBy" TEXT,
+    "deletedAt" TIMESTAMPTZ(3),
+    "deletedBy" TEXT,
+    "editedAt" TIMESTAMPTZ(3),
+    "editedBy" TEXT,
 
     CONSTRAINT "Collection_pkey" PRIMARY KEY ("id")
 );

@@ -9974,6 +9974,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chartjs-adapter-moment@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "chartjs-adapter-moment@npm:1.0.1"
+  peerDependencies:
+    chart.js: ">=3.0.0"
+    moment: ^2.10.2
+  checksum: 9c7ddc6ebf5741c334464bb6a72629afce7b1fa1480e39d926f836bc03f9bb21cd99edc74acb6a8a7faeb3ea06afa8904af95d2f571912ce65f35c5c014b5b03
+  languageName: node
+  linkType: hard
+
+"chartjs-plugin-trendline@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "chartjs-plugin-trendline@npm:2.0.0"
+  checksum: 56bd59cf9feaaafeac734a2996efa5cd6ebd250d8b6b0d323886fe37fcf99814d3a146fb13ddfe8fcb5cd6f35d9a742c3114bfbc52f72b4c3f2bcd62b949af79
+  languageName: node
+  linkType: hard
+
 "checkpoint-client@npm:1.1.21":
   version: 1.1.21
   resolution: "checkpoint-client@npm:1.1.21"
@@ -18184,6 +18201,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"moment@npm:^2.29.4":
+  version: 2.29.4
+  resolution: "moment@npm:2.29.4"
+  checksum: 844c6f3ce42862ac9467c8ca4f5e48a00750078682cc5bda1bc0e50cc7ca88e2115a0f932d65a06e4a90e26cb78892be9b3ca3dd6546ca2c4d994cebb787fc2b
+  languageName: node
+  linkType: hard
+
 "move-concurrently@npm:^1.0.1":
   version: 1.0.1
   resolution: "move-concurrently@npm:1.0.1"
@@ -21552,9 +21576,12 @@ __metadata:
     "@mui/x-date-pickers": ^5.0.17
     "@redwoodjs/core": 3.8.0
     chart.js: ^4.2.0
+    chartjs-adapter-moment: ^1.0.1
+    chartjs-plugin-trendline: ^2.0.0
     date-fns: ^2.29.3
     jspdf: ^2.5.1
     jspdf-autotable: ^3.5.28
+    moment: ^2.29.4
     node-fetch: 2.6.7
     react-chartjs-2: ^5.2.0
   languageName: unknown

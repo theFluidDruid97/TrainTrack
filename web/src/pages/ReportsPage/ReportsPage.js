@@ -1,20 +1,180 @@
-import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { useState } from 'react'
+import { Data } from 'src/components/Charts/TestData.js'
+import { pieData } from 'src/components/Charts/PieTestData.js'
+import PieChart from 'src/components/Charts/PieChart.js'
+import { BarChart } from 'src/components/Charts/BarChart.js'
+import chartTrendline from 'chartjs-plugin-trendline'
+import Button from '@mui/material/Button'
+import 'chartjs-adapter-moment'
+import 'moment'
+import { stackedBarChart } from 'src/components/Charts/StackedBarChart.js'
+import LineChart from 'src/components/Charts/LineChart.js'
+import './ReportsPage.css'
+import { CategoryScale } from 'chart.js'
+import Chart from 'chart.js/auto'
+Chart.register(CategoryScale)
+Chart.register(chartTrendline)
+
 
 const ReportsPage = () => {
-  return (
-    <>
-      <MetaTags title="Reports" description="Reports page" />
+  const [displayed, setDisplayed] = React.useState(1)
 
-      <h1>Reports</h1>
-      <p>
-        Find me in <code>./web/src/pages/ReportsPage/ReportsPage.js</code>
-      </p>
-      <p>
-        My default route is named <code>reports</code>, link to me with `
-        <Link to={routes.reports()}>Reports</Link>`
-      </p>
-    </>
+  const [value, setValue] = React.useState('one')
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
+  }
+
+  // Chart Configuration
+  Chart.defaults.font.size = 16
+  Chart.defaults.font.family = 'oxygen'
+  Chart.defaults.font.weight = 'bold'
+  Chart.defaults.color - 'rgba(255,255,255, 1)'
+
+  const [barChartData, setBarChartData] = useState({
+    labels: Data.map((data) => data.month),
+
+    datasets: [
+      {
+        label: 'Overdue ',
+        data: Data.map((data) => data.overdue),
+        backgroundColor: ['rgba(255, 0, 0, 0.5)'],
+        borderColor: 'black',
+        borderWidth: 2,
+        trendlineLinear: {
+          style: '#3e95cd',
+          lineStyle: 'line',
+          width: 1,
+        },
+      },
+      {
+        label: 'Due ',
+        data: Data.map((data) => data.due),
+        backgroundColor: ['rgba(255, 255, 0, 0.5)'],
+        borderColor: 'black',
+        borderWidth: 2,
+      },
+      {
+        label: 'Current ',
+        data: Data.map((data) => data.current),
+        backgroundColor: ['rgba(0, 255, 0, 0.5)'],
+        borderColor: 'black',
+        borderWidth: 2,
+      },
+    ],
+  })
+
+  const [stackedBarChartData, setStackedBarChartData] = useState({
+    labels: Data.map((data) => data.month),
+
+    datasets: [
+      {
+        label: 'Overdue ',
+        data: Data.map((data) => data.overdue),
+        backgroundColor: ['rgba(255, 0, 0, 0.5)'],
+        borderColor: 'black',
+        borderWidth: 2,
+        stack: 'Stack 0',
+        trendlineLinear: {
+          style: '#3e95cd',
+          lineStyle: 'line',
+          width: 1,
+        },
+      },
+      {
+        label: 'Due ',
+        data: Data.map((data) => data.due),
+        backgroundColor: ['rgba(255, 255, 0, 0.5)'],
+        borderColor: 'black',
+        borderWidth: 2,
+        stack: 'Stack 0',
+      },
+      {
+        label: 'Current ',
+        data: Data.map((data) => data.current),
+        backgroundColor: ['rgba(0, 255, 0, 0.5)'],
+        borderColor: 'black',
+        borderWidth: 2,
+        stack: 'Stack 0',
+      },
+    ],
+  })
+
+  const [lineChartData, setLineChartData] = useState({
+    labels: Data.map((data) => data.month),
+
+    datasets: [
+      {
+        label: 'Overdue ',
+        data: Data.map((data) => data.overdue),
+        backgroundColor: ['rgba(255, 0, 0, 0.5)'],
+        borderColor: 'rgb(255, 0, 0)',
+        borderWidth: 2,
+        trendlineLinear: {
+          style: '#3e95cd',
+          lineStyle: 'line',
+          width: 1,
+        },
+      },
+      {
+        label: 'Due ',
+        data: Data.map((data) => data.due),
+        backgroundColor: ['rgba(255, 255, 0, 0.5)'],
+        borderColor: 'rgb(255, 255, 0)',
+        borderWidth: 2,
+      },
+      {
+        label: 'Current ',
+        data: Data.map((data) => data.current),
+        backgroundColor: ['rgba(0, 128, 0, 0.5)'],
+        borderColor: 'rgb(0, 128, 0)',
+        borderWidth: 2,
+      },
+    ],
+  })
+
+  const [pieChartData, setPieChartData] = useState({
+    labels: ['Overdue', 'Due', 'Current '],
+
+    datasets: [
+      {
+        labels: ['Overdue', 'Due', 'Current '],
+        data: [
+          pieData.map((pieData) => pieData.overdue),
+          pieData.map((pieData) => pieData.due),
+          pieData.map((pieData) => pieData.current),
+        ],
+        backgroundColor: [
+          'rgba(255, 0, 0, 0.5)',
+          'rgba(255, 255, 0, 0.5)',
+          'rgba(0, 255, 0, 0.5)',
+        ],
+        borderColor: 'black',
+        borderWidth: 2,
+      },
+    ],
+  })
+
+  const DisplayChart = () => {
+    if (displayed === 1) {
+      return <LineChart chartData={lineChartData} />
+    } else if (displayed == 2) {
+      return <PieChart chartData={pieChartData} />
+    } else if (displayed === 3) {
+      return <BarChart chartData={barChartData} />
+    } else if (displayed === 4) {
+      return <BarChart chartData={stackedBarChartData} />
+    }
+  }
+
+  return (
+    <div className="Reports">
+      <Button onClick={() => setDisplayed(1)}>Line Graph</Button>
+      <Button onClick={() => setDisplayed(2)}>Pie Chart</Button>
+      <Button onClick={() => setDisplayed(3)}>Bar Graph</Button>
+      <Button onClick={() => setDisplayed(4)}>Stacked Bar Graph</Button>
+      <DisplayChart />
+    </div>
   )
 }
 
