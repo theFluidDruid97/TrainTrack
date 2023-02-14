@@ -1,4 +1,4 @@
-const Notify = (title, body) => {
+export const Notify = (currentUser) => {
   let permission = Notification.permission
 
   if (permission === 'granted') {
@@ -17,19 +17,35 @@ const Notify = (title, body) => {
     })
   }
   function showNotification() {
-    //  if(document.visibilityState === "visible") {
-    //      return;
-    //  }
-    // let title = 'You have Training thats due soon!'
-    // let body = 'Get it done or youll be in trouble!'
-
-    let notification = new Notification(title, { body })
-
-    notification.onclick = () => {
-      notification.close()
-      window.parent.focus()
+    if (document.visibilityState === 'visible') {
+      return
+    }
+    if (currentUser.status === 'due') {
+      let title = "You have Training that's due!"
+      let body = 'Please check your training list.'
+      let notification = new Notification(title, { body })
+      notification.onclick = () => {
+        notification.close()
+        window.parent.focus()
+      }
+    } else if (currentUser.status === 'overdue') {
+      let title = "You have Training that's overdue!"
+      let body = 'Complete your training immedietly.'
+      let notification = new Notification(title, { body })
+      notification.onclick = () => {
+        notification.close()
+        window.parent.focus()
+      }
+    } else {
+      let title = 'You have no Training that is due or overdue.'
+      let body = 'Good Job!'
+      let notification = new Notification(title, { body })
+      notification.onclick = () => {
+        notification.close()
+        window.parent.focus()
+      }
+      console.log('clicked')
+      // return
     }
   }
 }
-
-export default Notify
