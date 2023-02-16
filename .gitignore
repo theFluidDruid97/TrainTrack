@@ -19,3 +19,4 @@ api/src/lib/generateGraphiQLHeader.js
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+!.yarn.lock
