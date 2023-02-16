@@ -22,7 +22,6 @@ import { ThemeModeContext } from '../../App.js'
 import { GeneralContext } from '../../App.js'
 import { DarkModeSwitch } from '../../components/DarkModeSwitch/DarkModeSwitch.js'
 import { AppBar } from '../../components/NavigationFunctions/NavigationFunctions.js'
-import { Notify } from '../Notification/Notification.js'
 
 const Navigation = () => {
   const { isAuthenticated, currentUser, logOut } = useAuth()
@@ -91,17 +90,7 @@ const Navigation = () => {
             <Box>
               <Button color="inherit">
                 <Badge color="secondary" badgeContent={1}>
-                  <NotificationsIcon
-<<<<<<< Updated upstream
-                    onClick={() => {
-                      Notify(currentUser)
-                    }}
-=======
-                  // onClick={() => {
-                  //   Notify(currentUser)
-                  // }}
->>>>>>> Stashed changes
-                  />
+                  <NotificationsIcon />
                 </Badge>
               </Button>
               <Toaster />

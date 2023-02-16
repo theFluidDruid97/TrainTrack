@@ -9,7 +9,6 @@ import './scaffold.css'
 import './index.css'
 
 const App = () => {
-  const [notified, setNotified] = React.useState(false)
   const currentMode = localStorage.getItem('mode')
   const [mode, setMode] = React.useState(currentMode || 'light')
   const [open, setOpen] = React.useState(false)
@@ -24,13 +23,7 @@ const App = () => {
             setOpen,
             supervisorModalOpen,
             setSupervisorModalOpen,
-<<<<<<< Updated upstream
             rolesList,
-=======
-            roles,
-            notified,
-            setNotified,
->>>>>>> Stashed changes
           }}
         >
           <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">

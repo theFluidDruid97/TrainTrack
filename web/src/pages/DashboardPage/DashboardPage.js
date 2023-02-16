@@ -4,7 +4,7 @@ import { MetaTags } from '@redwoodjs/web'
 
 import { Notify } from 'src/components/Notification/Notification'
 const DashboardPage = () => {
-  const { isAuthenticated, currentUser, logOut } = useAuth()
+  const { currentUser } = useAuth()
   return (
     <>
       {Notify(currentUser)}

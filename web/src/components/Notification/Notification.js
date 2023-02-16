@@ -1,55 +1,8 @@
-<<<<<<< Updated upstream
-export const Notify = (currentUser) => {
-  let permission = Notification.permission
-=======
 import { toast } from '@redwoodjs/web/dist/toast'
->>>>>>> Stashed changes
 
 import { GeneralContext } from 'src/App'
 // import { Success } from '../Airman/AirmanCell/AirmanCell'
 
-<<<<<<< Updated upstream
-  function requestAndShowPermission() {
-    Notification.requestPermission(function (permission) {
-      if (permission === 'granted') {
-        showNotification()
-      }
-    })
-  }
-  function showNotification() {
-    if (document.visibilityState === 'visible') {
-      return
-    }
-    if (currentUser.status === 'due') {
-      let title = "You have Training that's due!"
-      let body = 'Please check your training list.'
-      let notification = new Notification(title, { body })
-      notification.onclick = () => {
-        notification.close()
-        window.parent.focus()
-      }
-    } else if (currentUser.status === 'overdue') {
-      let title = "You have Training that's overdue!"
-      let body = 'Complete your training immedietly.'
-      let notification = new Notification(title, { body })
-      notification.onclick = () => {
-        notification.close()
-        window.parent.focus()
-      }
-    } else {
-      let title = 'You have no Training that is due or overdue.'
-      let body = 'Good Job!'
-      let notification = new Notification(title, { body })
-      notification.onclick = () => {
-        notification.close()
-        window.parent.focus()
-      }
-      console.log('clicked')
-      // return
-    }
-  }
-}
-=======
 export const Notify = (currentUser) => {
   const { notified, setNotified } = React.useContext(GeneralContext)
   if (currentUser.status === 'Due' && notified === false) {
@@ -111,4 +64,3 @@ export const Notify = (currentUser) => {
 //     // return
 //   }
 // }
->>>>>>> Stashed changes
