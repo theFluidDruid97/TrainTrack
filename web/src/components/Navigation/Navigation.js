@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography'
 
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes, navigate } from '@redwoodjs/router'
+import { Toaster } from '@redwoodjs/web/dist/toast/index.js'
 
 import { ThemeModeContext } from '../../App.js'
 import { GeneralContext } from '../../App.js'
@@ -91,12 +92,19 @@ const Navigation = () => {
               <Button color="inherit">
                 <Badge color="secondary" badgeContent={1}>
                   <NotificationsIcon
+<<<<<<< Updated upstream
                     onClick={() => {
                       Notify(currentUser)
                     }}
+=======
+                  // onClick={() => {
+                  //   Notify(currentUser)
+                  // }}
+>>>>>>> Stashed changes
                   />
                 </Badge>
               </Button>
+              <Toaster />
               <Button
                 id="basic-button"
                 aria-controls={open ? 'basic-menu' : undefined}

@@ -1,9 +1,13 @@
+import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
+import { Notify } from 'src/components/Notification/Notification'
 const DashboardPage = () => {
+  const { isAuthenticated, currentUser, logOut } = useAuth()
   return (
     <>
+      {Notify(currentUser)}
       <MetaTags title="Dashboard" description="Dashboard page" />
 
       <h1>Dashboard</h1>
